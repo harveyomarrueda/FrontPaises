@@ -1,0 +1,2 @@
+D:\PERSONALES\PRUEBAS\HEINSSON\Proyectos\obj\Debug\ClienteApiPaises.csprojAssemblyReference.cache
+D:\PERSONALES\PRUEBAS\HEINSSON\Proyectos\obj\Debug\ClienteApiPaises.csproj.CoreCompileInputs.cache

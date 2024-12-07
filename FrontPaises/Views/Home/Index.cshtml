@@ -1,0 +1,148 @@
+﻿@model PaisesMVC.Models.modelPaises
+@{
+    string customDateFormat;
+
+    ViewBag.Title = "Home Page";
+    customDateFormat = ViewBag.customDateFormat;
+}
+
+<style type="text/css">
+    #GrillaDatos {
+        font-size: 1vw;
+    }
+</style>
+
+<script type="text/javascript">
+
+    //SKILLS: Implementar Filtrado en Vista MVC
+
+    var txtToFilter;
+
+    txtToFilter = getQuerystringFilter();
+
+    function getQuerystringFilter()
+    {
+        var urlParams, txtToFilter;
+
+        urlParams = new URLSearchParams(window.location.search);
+        txtToFilter = urlParams.get('txtFilter').trim();
+
+        return txtToFilter;
+    }
+
+    function VistaFiltrada()
+    {
+        var filterText = document.getElementById('FilterText').value.trim();
+        if (filterText.length > 0) {
+
+            var url = '/?txtFilter=' + filterText;
+            window.location.href = url;
+        }
+        else
+         {
+            window.location.href = '/';
+         }
+    }
+</script>
+
+<div class="jumbotron">
+
+    <h4>CONSULTA AL SERVICIO API REST DE PAISES</h4>
+
+    <span align="right">
+        Digite el nombre del Pais para consultar datos:
+        <input type="text" id="FilterText" maxlength="30" class="control-label col-md-2" onclick="this.select()" />
+        <a class="btn btn-info" href="javascript:VistaFiltrada()">CONSULTAR</a>
+    </span>
+
+
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+    <!--        Html.HiddenFor(model => model.IdTarea)             -->
+
+
+
+    <div class="row">
+        @Html.LabelFor(model => model.name.common, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.name.common, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+        </div>
+    </div>
+    <div class="row">
+        @Html.LabelFor(model => model.name.official, htmlAttributes: new { @class = "control-label col-md-2" })
+
+
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.name.official, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+        </div>
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(model => model.currencies.COP.name, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.currencies.COP.name, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+        </div>
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(model => model.region, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.region, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+        </div>
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(model => model.capital, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.capital, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.capital, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(model => model.area, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.area, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+        </div>
+    </div>
+
+    <div class="row">
+        @Html.LabelFor(model => model.maps.googleMaps, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.maps.googleMaps, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+        </div>
+    </div>
+
+
+    <div class="row">
+        <p><br /></p>
+    </div>
+
+    <div class="row">
+        <p>UBICACION SOBRE EL MAPA.....</p><br />
+        <iframe id="mapa" style="height:350px;width:540px;" title="MAPA"></iframe>
+    </div>
+
+
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <p><br /></p>
+    </div>
+</div>
+
+<script type="text/javascript">
+
+    if (txtToFilter.length > 0)
+    {
+        var filterTextBox = document.getElementById('FilterText');
+        var mapa = document.getElementById('mapa');
+
+        filterTextBox.value = txtToFilter;
+        mapa.src = 'https://maps.google.com/?q=' + txtToFilter + '&output=svembed';
+
+    }
+
+</script>
