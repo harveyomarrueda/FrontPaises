@@ -37,6 +37,11 @@ namespace PaisesMVC.Controllers
                 {
 
                     datosPais = await _servicioAPI.GetDatosPais(txtFilter);
+
+		    //Código entrante
+		    ViewBag.NuevoDato = "CA001";
+
+
                     if (datosPais == null)
                     {
                         txtErrors = "Error del Servicio externo. Respuesta nula consultando pais (" + txtFilter + ")";
