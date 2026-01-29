@@ -39,7 +39,7 @@ namespace PaisesMVC.Controllers
                     datosPais = await _servicioAPI.GetDatosPais(txtFilter);
 
 		    //Código entrante
-		    ViewBag.NuevoDato = "CA001";
+		    ViewBag.NuevoDato = "CA002-01";
 
 
                     if (datosPais == null)
