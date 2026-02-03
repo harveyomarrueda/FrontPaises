@@ -150,7 +150,7 @@
             </nav>
             <div class="container-fluid">
                 @RenderBody()
-                <p style="font-size:small; margin-top:-60px">&copy; @DateTime.Now.Year - Consulta Geogr&aacute;fica - ASP.NET - WebApp Creada por: Harvey Rueda - <a href="mailto:harveyrueda@yahoo.com">harveyrueda@yahoo.com</a></p>
+                <p style="font-size:small; margin-top:-60px">&copy; @DateTime.Now.Year - Consulta Geogr&aacute;fica - ASP.NET - Creado por: Harvey Rueda - <a href="mailto:harveyrueda@yahoo.com">harveyrueda@yahoo.com</a></p>
             </div>
         </div>
         <!-- ============================================================== -->
@@ -176,16 +176,16 @@
     @RenderSection("scripts", required: false)
 
   <script>
-
-        $("#menu-toggle").on('clic', function (e) {
-            e.preventDefault();
-            $("#wrapper").toggleClass("toggled");
-        });
-
+        //En Nube debe quedar abajo de los renders anteriores, en local en la sección toggle script
         $("#menu-toggle").click(function (e) {
             e.preventDefault();
             $("#wrapper").toggleClass("toggled");
         });
+
+        // $("#menu-toggle").on('clic', function (e) {
+        //    e.preventDefault();
+        //    $("#wrapper").toggleClass("toggled");
+        // });
 
         $(window).on('load', function () {
             $('.spinner').css('display', 'none');
