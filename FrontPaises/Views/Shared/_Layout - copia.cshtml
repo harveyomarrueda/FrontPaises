@@ -4,7 +4,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>API DE PAISES 2026 - ( @ViewBag.Title )</title>
+    <title>CONSULTA DE PAISES - ( @ViewBag.Title )</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
@@ -42,7 +42,6 @@
             filter: alpha(opacity=60);
             opacity: 0.6;
             -moz-opacity: 0.8;
-            display:none;
         }
 
         .loader {
@@ -115,10 +114,9 @@
         <!-- ============================================================== -->
 
 
-        <div id="animacion" class="spinner">
+        <div class="spinner">
             <div class="center-div">
                 <div class="inner-div">
-                    <span>Consultando...</span>
                     <div class="loader"></div>
                 </div>
             </div>
@@ -155,6 +153,43 @@
     </script>
 
 
+    <script>
+
+        //SKILL Animacion mientras suceden las consultas API
+        $(document).ready(function () {
+            $(document.querySelectorAll("button[type=button]")).click(function () {
+                $('.spinner').css('display', 'block');
+            });
+        });
+    </script>
+
+    <script>
+        $(window).on('load', function () {
+            $('.spinner').css('display', 'none');
+        });
+    </script>
+
+
+
+    <script>
+
+        $(document).ajaxSend(function (event, xhr, options) {
+
+            $('.spinner').css('display', 'block');
+
+        }).ajaxComplete(function (event, xhr, options) {
+
+            $('.spinner').css('display', 'none');
+
+        }).ajaxError(function (event, jqxhr, settings, exception) {
+
+            $('.spinner').css('display', 'none');
+
+        });
+
+    </script>
+
+
 
     <!-- SKILL Monitoreo para fallas en el front  -->
     <div id="txtErrores" style="width:100%; position:absolute; margin-top:-50px; z-index:2">
@@ -167,12 +202,6 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
-
-   <script>
-        $(window).on('load', function () {
-            $('.spinner').css('display', 'none');
-        });
-    </script>
 
 
 </body>

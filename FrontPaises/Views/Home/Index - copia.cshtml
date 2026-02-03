@@ -32,15 +32,6 @@
 
     function VistaFiltrada()
     {
-        var loader;
-        loader=document.getElementById('animacion');
-        
-        //Aqui prende la animación.. Lo apagará el jquery en layout.cshtml
-        if (loader.style.display=="none")
-        {
-          loader.style.display="block";    
-        }
-        
         var filterText = document.getElementById('FilterText').value.trim();
         if (filterText.length > 0) {
 
@@ -54,12 +45,12 @@
     }
 </script>
 
-<div style="padding:0 0 0 10px; !important" class="jumbotron">
+<div class="jumbotron">
 
-    <h4>Consulta API Rest de Paises 2026</h4>
+    <h4>CONSULTA AL SERVICIO API REST DE PAISES</h4>
 
     <span align="right">
-        Digite nombre del Pais a consultar:
+        Digite el nombre del Pais para consultar datos:
         <input type="text" id="FilterText" maxlength="30" class="control-label col-md-2" onclick="this.select()" />
         <a class="btn btn-info" href="javascript:VistaFiltrada()">CONSULTAR</a>
     </span>
@@ -75,7 +66,7 @@
     <div class="row">
         @Html.LabelFor(model => model.name.common, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.name.common, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @style="font-weight:bold; color:blue" } })
+            @Html.EditorFor(model => model.name.common, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
         </div>
     </div>
     <div class="row">
@@ -83,47 +74,54 @@
 
 
         <div class="col-md-10">
-            @Html.EditorFor(model => model.name.official, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @style="font-weight:bold; color:blue" } })
+            @Html.EditorFor(model => model.name.official, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
         </div>
     </div>
 
     <div class="row">
         @Html.LabelFor(model => model.currencies.COP.name, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.currencies.COP.name, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @style="font-weight:bold; color:blue" } })
+            @Html.EditorFor(model => model.currencies.COP.name, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
         </div>
     </div>
 
     <div class="row">
         @Html.LabelFor(model => model.region, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.region, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @style="font-weight:bold; color:blue" } })
+            @Html.EditorFor(model => model.region, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
         </div>
     </div>
 
     <div class="row">
         @Html.LabelFor(model => model.capital, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.capital[0], new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @style="font-weight:bold; color:blue"} })
+            @Html.EditorFor(model => model.capital, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.capital, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="row">
         @Html.LabelFor(model => model.area, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.area, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @style="font-weight:bold; color:blue" } })
+            @Html.EditorFor(model => model.area, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
         </div>
     </div>
 
     <div class="row">
-        <div class="col-md-4"><p><br /></p></div>
-    </div>
-
-    <div class="row">
-        <p class="control-label col-md-2">Ubicaci&oacute;n en Mapa</p>
+        @Html.LabelFor(model => model.maps.googleMaps, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-          <iframe id="mapa" style="height:350px;width:540px;" title="MAPA"></iframe>
+            @Html.EditorFor(model => model.maps.googleMaps, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
         </div>
+    </div>
+
+
+    <div class="row">
+        <p><br /></p>
+    </div>
+
+    <div class="row">
+        <p>UBICACION SOBRE EL MAPA.....</p><br />
+        <iframe id="mapa" style="height:350px;width:540px;" title="MAPA"></iframe>
     </div>
 
 
