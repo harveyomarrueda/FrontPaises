@@ -136,13 +136,13 @@
 
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/">Inicio</a>
+                            <a class="nav-link" style="font-size:smaller" href="/">Inicio</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Home/About">Acerca de</a>
+                            <a class="nav-link" style="font-size:smaller" href="/Home/About">Acerca de</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Home/Contact">Contacto</a>
+                            <a class="nav-link" style="font-size:smaller" href="/Home/Contact">Contacto</a>
                         </li>
                     </ul>
 
@@ -150,7 +150,7 @@
             </nav>
             <div class="container-fluid">
                 @RenderBody()
-                <p style="font-size:small; margin-top:-50px">&copy; @DateTime.Now.Year - Consulta Geogr&aacute;fica - ASP.NET - Creado por: Harvey Rueda - <a href="mailto:harveyrueda@yahoo.com">harveyrueda@yahoo.com</a></p>
+                <p style="font-size:small; margin-top:-50px">&copy; @DateTime.Now.Year - Consulta Geogr&aacute;fica - ASP.NET - Harvey Rueda - <a href="mailto:harveyrueda@yahoo.com">harveyrueda@yahoo.com</a></p>
             </div>
         </div>
         <!-- ============================================================== -->
@@ -163,17 +163,15 @@
     <!-- ============================================================== -->
 
     <script>
+        $(window).on('load', function () {
+            $('.spinner').css('display', 'none');
+        });
+
         $(document).ready(function () {
             $("#menu-toggle").click(function (e) {
                 e.preventDefault();
                 $("#wrapper").toggleClass("toggled");
             });
-        });
-    </script>
-
-   <script>
-        $(window).on('load', function () {
-            $('.spinner').css('display', 'none');
         });
     </script>
 
